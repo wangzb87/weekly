@@ -1,8 +1,11 @@
 import datetime
 import os
 from pprint import pp, pprint
+from re import A
 from time import ctime, time
 import config_filter
+import shutil
+
 
 all_file = []
 now = datetime.datetime.now()
@@ -56,10 +59,12 @@ def filter_by_mtime(*args):
 
 if __name__ == "__main__":
     all_file = findAllFile(config_filter.path_e)
-    filtered_file = list(filter(filter_by_extension, all_file))
-    filtered_file = list(filter(filter_by_create_time, filtered_file))
-    filtered_file = list(filter(filter_by_mtime, filtered_file))
+    # filtered_file = list(filter(filter_by_extension, all_file))
+    # filtered_file = list(filter(filter_by_create_time, filtered_file))
+    # filtered_file = list(filter(filter_by_mtime, filtered_file))
 
-    pprint(filtered_file)
-    pprint(len(filtered_file))
+    # pprint(all_file)
+    pprint(len(all_file))
+    for file_attr in all_file:
+        shutil.move(file_attr[0], "d:/dmove")
 
